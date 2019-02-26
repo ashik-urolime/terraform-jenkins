@@ -9,7 +9,7 @@ env.credentials_id = '1'
 //jenkins env vars
 //env.jenkins_server_url = 'http://localhost:8080'
 //env.jenkins_node_custom_workspace_path = "/opt/bitnami/apps/jenkins/jenkins_home/${JOB_NAME}/workspace"
-env.jenkins_node_custom_workspace_path = "/var/lib/jenkins"
+env.jenkins_node_custom_workspace_path = "$WORKSPACE"
 env.jenkins_node_label = 'master'
 env.terraform_version = '0.11.10'
 def notifySlack(text, channel, attachments) {
