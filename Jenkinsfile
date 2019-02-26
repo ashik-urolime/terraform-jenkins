@@ -7,7 +7,7 @@ env.credentials_id = '1'
 //env.slack_url = 'https://hooks.slack.com/services/SDKJSDKS/SDSDJSDK/SDKJSDKDS23434SDSDLCMLC'
 //env.notification_channel = 'my-slack-channel'
 //jenkins env vars
-env.jenkins_server_url = 'http://localhost:8080'
+//env.jenkins_server_url = 'http://localhost:8080'
 //env.jenkins_node_custom_workspace_path = "/opt/bitnami/apps/jenkins/jenkins_home/${JOB_NAME}/workspace"
 env.jenkins_node_custom_workspace_path = "/var/lib/jenkins"
 env.jenkins_node_label = 'master'
@@ -65,9 +65,9 @@ sh "echo 'yes' | sudo terraform apply $jenkins_node_custom_workspace_path/worksp
 }
 }
 }
-post { 
-  always { 
-    cleanWs()
-   }
-  }
+//post { 
+//  always { 
+//    cleanWs()
+//   }
+//  }
 }
