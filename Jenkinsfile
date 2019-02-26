@@ -4,8 +4,8 @@ env.git_url = 'https://user@bitbucket.org/user/terraform-ci.git'
 env.git_branch = 'master'
 env.credentials_id = '1'
 //slack env vars
-env.slack_url = 'https://hooks.slack.com/services/SDKJSDKS/SDSDJSDK/SDKJSDKDS23434SDSDLCMLC'
-env.notification_channel = 'my-slack-channel'
+//env.slack_url = 'https://hooks.slack.com/services/SDKJSDKS/SDSDJSDK/SDKJSDKDS23434SDSDLCMLC'
+//env.notification_channel = 'my-slack-channel'
 //jenkins env vars
 env.jenkins_server_url = 'http://localhost:8080'
 env.jenkins_node_custom_workspace_path = "/opt/bitnami/apps/jenkins/jenkins_home/${JOB_NAME}/workspace"
@@ -48,19 +48,19 @@ stage('init_and_plan') {
 steps {
 sh "sudo terraform init $jenkins_node_custom_workspace_path/workspace"
 sh "sudo terraform plan $jenkins_node_custom_workspace_path/workspace"
-notifySlack("Build completed! Build logs from jenkins server $jenkins_server_url/jenkins/job/$JOB_NAME/$BUILD_NUMBER/console", notification_channel, [])
+//notifySlack("Build completed! Build logs from jenkins server $jenkins_server_url/jenkins/job/$JOB_NAME/$BUILD_NUMBER/console", notification_channel, [])
 }
 }
 stage('approve') {
 steps {
-  notifySlack("Do you approve deployment? $jenkins_server_url/jenkins/job/$JOB_NAME", notification_channel, [])
+//  notifySlack("Do you approve deployment? $jenkins_server_url/jenkins/job/$JOB_NAME", notification_channel, [])
 input 'Do you approve deployment?'
 }
 }
 stage('apply_changes') {
 steps {
 sh "echo 'yes' | sudo terraform apply $jenkins_node_custom_workspace_path/workspace"
-notifySlack("Deployment logs from jenkins server $jenkins_server_url/jenkins/job/$JOB_NAME/$BUILD_NUMBER/console", notification_channel, [])
+//notifySlack("Deployment logs from jenkins server $jenkins_server_url/jenkins/job/$JOB_NAME/$BUILD_NUMBER/console", notification_channel, [])
 }
 }
 }
